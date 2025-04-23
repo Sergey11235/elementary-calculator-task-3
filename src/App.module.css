@@ -1,0 +1,57 @@
+.app {
+    text-align: center;
+}
+
+.container {
+    background-color: #303030;
+    margin: 0 auto;
+    width: 350px;
+}
+
+.screen {
+    color: #fff;
+    margin-top: 100px;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 40px;
+    border: 1px solid #000;
+}
+
+.resultScreen {
+    color: rgb(142, 247, 251);
+}
+
+.buttons {
+    display: flex;
+}
+
+.leftGroup {
+    width: 240px;
+}
+
+.rigthGroup {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.button {
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    font-size: 30px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.button:hover {
+    border: none;
+    background-color: antiquewhite;
+}
+
+.button:active {
+    background-color: #d2cece;
+    box-shadow: none;
+}
+
