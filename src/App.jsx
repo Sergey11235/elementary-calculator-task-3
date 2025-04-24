@@ -11,6 +11,42 @@ export const App = () => {
 
   const output = operand1 + operator + operand2;
 
+    const handleClickLeftButton = (num) => {
+      if (operator === "") {
+        if (operand1 === "0") {
+          setOperand1(num);
+        } else {
+          setOperand1(operand1 + num);
+        }
+      } else {
+        if (operand2 === "0") {
+          setOperand2(num);
+        } else {
+          setOperand2(operand2 + num);
+        }
+      }
+      setIsResult(false);
+    };
+
+  const handleClickRigthButton = () => {
+    if (operand2 !== "") {
+      switch (operator) {
+        case "+": {
+          setOperand1(Number(operand1) + Number(operand2));
+          break;
+        }
+        case "-": {
+          setOperand1(Number(operand1) - Number(operand2));
+          break;
+        }
+        default:
+      }
+      setOperand2("");
+    }
+    setOperator("");
+    setIsResult(true);
+  };
+
   return (
     <div className={styles.app}>
       <div className={styles.container}>
@@ -23,23 +59,9 @@ export const App = () => {
           <div className={styles.leftGroup}>
             {NUMS.map((num) => (
               <button
+                key={num}
                 className={styles.button}
-                onClick={() => {
-                  if (operator === "") {
-                    if (operand1 === "0") {
-                      setOperand1(num);
-                    } else {
-                      setOperand1(operand1 + num);
-                    }
-                  } else {
-                    if (operand2 === "0") {
-                      setOperand2(num);
-                    } else {
-                      setOperand2(operand2 + num);
-                    }
-                  }
-                  setIsResult(false);
-                }}
+                onClick={() => handleClickLeftButton(num)}
               >
                 {num}
               </button>
@@ -75,27 +97,7 @@ export const App = () => {
             >
               -
             </button>
-            <button
-              className={styles.button}
-              onClick={() => {
-                if (operand2 !== "") {
-                  switch (operator) {
-                    case "+": {
-                      setOperand1(Number(operand1) + Number(operand2));
-                      break;
-                    }
-                    case "-": {
-                      setOperand1(Number(operand1) - Number(operand2));
-                      break;
-                    }
-                    default:
-                  }
-                  setOperand2("");
-                }
-                setOperator("");
-                setIsResult(true);
-              }}
-            >
+            <button className={styles.button} onClick={handleClickRigthButton}>
               =
             </button>
           </div>
